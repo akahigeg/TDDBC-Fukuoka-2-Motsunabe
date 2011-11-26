@@ -56,6 +56,17 @@ describe TweetCategorizer do
         it { should == "Mention\t嗚呼 @bob かきくけこ" }
       end
     end
+
+    context "複数の種類がある場合" do
+      context "「@bob あいうえお #hashtag」を与えたときに「Reply,!HashTag\tあいうえお #hashtag」を返す" do
+        let(:tweet) { "Alice\t@bob あいうえお #hashtag" }
+        it { should == "!HashTag,Reply\t@bob あいうえお #hashtag" }
+      end
+      context "「嗚呼 @bob あいうえお #hashtag」を与えたときに「Mention,!HashTag\tあいうえお #hashtag」を返す" do
+        let(:tweet) { "Alice\t嗚呼 @bob あいうえお #hashtag" }
+        it { should == "!HashTag,Mention\t嗚呼 @bob あいうえお #hashtag" }
+      end
+    end
   end
 end
 
