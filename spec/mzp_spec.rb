@@ -51,6 +51,10 @@ describe TweetCategorizer do
         let(:tweet) { "Alice\t嗚呼 @bob あいうえお" }
         it { should == "Mention\t嗚呼 @bob あいうえお" }
       end
+      context "「嗚呼 @bob かきくけこ」を与えたときに「Mention\t嗚呼 @bob かきくけこ」を返す" do
+        let(:tweet) { "Alice\t嗚呼 @bob かきくけこ" }
+        it { should == "Mention\t嗚呼 @bob かきくけこ" }
+      end
     end
   end
 end
