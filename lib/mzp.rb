@@ -2,11 +2,11 @@
 
 class TweetCategorizer
   def categorize(input)
-    parts = input.split("\t")
+    screen_name, tweet = input.split("\t")
 
-    return "!HashTag\t#{parts[1]}" if parts[1] =~ /.*#.+$/
-    return "Reply\t#{parts[1]}" if parts[1] =~ /^@.+? .+$/
+    return "!HashTag\t#{tweet}" if tweet =~ /.*#.+$/
+    return "Reply\t#{tweet}" if tweet =~ /^@.+? .+$/
 
-    "Normal\t#{parts[1]}"
+    "Normal\t#{tweet}"
   end
 end
